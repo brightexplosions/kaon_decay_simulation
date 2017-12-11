@@ -112,6 +112,7 @@ the pions might miss the pion detector. Thus, the closer the second detector is 
 In the first part of this project, the average decay length of a $K^+$ is estimated based on a dataset containing the decay lengths of a mix of kaons and pions. Using the result of the first part we can simulate the location of the decay using a Monte-Carlo simulation for an exponential distribution. Further, some impulse vectors\footnote{For the derivation of the isotropic unit vector generator see Appendix \ref{subsec: unit_vector}} (which are distributed isotropically in the $K^+$ rest frame) are generated, supplemented with an energy to form a four-vector and boosted into the laboratory frame. Finally, the percentage of decayed kaons that are detected (called ‘acceptance of the downstream detector’) can be determined. 
 The whole simulation is conducted twice, once assuming that the particle beam is parallel to the $z$-axis and once including a Gaussian distributed deviation from the $z$-axis of the particle beam. 
 \section{Determination of the average decay length of the $K^+$}
+\label{sec: decay_length}
 In a first task we should estimate the average decay length of $K^+$ using data of an already conducted experiment in which $100'000$ measurements
 of decay lengths $dl_i$ were generated. The particle's beam had a fixed momentum of $\SI{75}{\giga\electronvolt\per\clight}$. However, the beam consisted only of $16\%$ of
 $K^+$ . The remaining $84\%$ consisted of $\pi^+$ with a known average decay length of $\beta \gamma c_0 \tau_{\pi^+} = 4.188 \si{\kilo\meter} =
@@ -316,10 +317,10 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 		\sigma _z  : \SI{0.7}{\meter}\\
 		\end{align*}
 		
-		To calculate the final uncertainty we used the relative error on the average decay length from chapter [TODO add reference]. The relative errors get quadratically added.
+		To calculate the final uncertainty we used the relative error on the average decay length from chapter \ref{sec: decay_length}. The relative errors get quadratically added.
 		
 		\begin{align}
-			m_z = \sigma _z \cdot \sqrt{ \left(\frac{\text{uncertanty on adl}}{\text{adl}}\right)^2 +  \left(\frac{\sigma_z}{z}\right)^2}
+			m_z = \sigma _z \cdot \sqrt{ \left(\frac{\sigma_{adl_{K^+}}}{adl}\right)^2 +  \left(\frac{\sigma_z}{z}\right)^2}
 		\end{align}
 		
 		The final optimal values for z are:
@@ -339,7 +340,7 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 \end{figure}
 
 \section{Conclusion}
-As we have seen the optimal distance between the detector and the source is around 280 meters (for the precise values check the previous sections). Therefore the experiment can be conduced optimally without expanding the provided area.
+As we have seen the optimal distance between the detector and the source is around 280 meters (for the precise values check section \ref{optimal detector distance}). Therefore the experiment can be conduced optimally without expanding the provided area.
 
 For the beam with gaussian scattering around the $z$-axis, the optimal distance should be shorter than without scattering, because the deviation from the $z$-axis leads to a higher probability of the pions missing the detector. Therefore our results are in line with what's to be expected.
 
@@ -396,7 +397,7 @@ y = \frac{\sin(a)+1}{2} \implies a=\arcsin(2y-1)
 \end{align}
 With $y$ being uniformly distributed values from $0$ to $1$ we can use this equation to get the correct $\varphi(a)$. Now all that’s left to do is to rotate the vector $[0;0;1]$ first by $\varphi$ around the $x$-axis and then by $\psi$ around the $y$-axis.
 \subsection{Python code}
-Here we provide a small Python code insight. The full code we released on git(wo?)\footnote{\href{gitlink}{text}}
+Here we provide a small Python code insight. The full code we released on github\footnote{\href{gitlink}{text}}
 	%\small
 	\footnotesize
 	%\scriptsize

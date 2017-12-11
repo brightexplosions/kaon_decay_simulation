@@ -1,6 +1,6 @@
-Checken ob meine edits funzen
 
--Conclusion schreiben
+
+
 -git link (beni)
 
 Was m.E. nicht getan werden muss:
@@ -14,10 +14,3 @@ Was m.E. nicht getan werden muss:
 -Bei der optimalen distance ist z wie ein Erwartungswert angegeben (<z>), das ist doch aber keine Erwartungswert, oder?
 -Wie kommt die Fehlerrechung (Gleichung 14) zustande?
 
-
-CONCLUSION2
-As we have seen the optimal distance between the detector and the source is around 280 meters (for the precise values check the previous sections). Therefore the experiment can be conduced optimally without expanding the provided area.
-
-For the beam with gaussian scattering around the z-axis, the optimal distance should be shorter than without scattering, because the deviation from the z-axis leads to a higher probability of the pions missing the detector. Therefore our results are in line with what's to be expected.
-
-It’s also worth mentioning that if we were to account for the pion decay, the optimal distance would tend to be shorter, since the decays of pions can only reduce the acceptance at longer distances. Dave the man
