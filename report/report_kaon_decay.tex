@@ -109,18 +109,18 @@ As shown in figure \ref{fig:setup} the initial beam of kaons is measured by dete
 the location of the decay and
 the decay angle (in the $K^+$ rest frame)
 the pions might miss the pion detector. Thus, the closer the second detector is to the first, the bigger the probability that the pions are detected. However, if the detector is too close to the first one, the kaons might decay after they have already passed the detector and will therefore not be detected. Given these two constraints, there is a unique optimal distance between the first and the second detector, which we compute with the following simulation. 
-In the first part of this project, the average decay length of a $K^+$ is estimated based on a dataset containing the decay lengths of a mix of kaons and pions. Using the result of the first part we can simulate the location of the decay using a Monte-Carlo simulation for an exponential distribution. Further, some impulse vectors\footnote{For the derivation of the isotropic unit vector generator see Appendix \ref{subsec: unit_vector}} (which are distributed isotropically in the $K^+$ rest frame) are generated, supplemented with an energy to form a four-vector and boosted into the laboratory frame. Finally, the percentage of decayed kaons that are detected (called ‘acceptance of the downstream detector’) can be determined. 
+In the first part of this project, the average decay length of a $K^+$ is estimated based on a dataset containing the decay lengths of a mix of kaons and pions. Using the result of the first part we can simulate the location of the decay using a Monte-Carlo simulation for an exponential distribution. Further, some impulse vectors\footnote{For the derivation of the isotropic unit vector generator see appendix \ref{subsec: unit_vector}} (which are distributed isotropically in the $K^+$ rest frame) are generated, supplemented with an energy to form a four-vector and boosted into the laboratory frame. Finally, the percentage of decayed kaons that are detected (called ‘acceptance of the downstream detector’) can be determined. 
 The whole simulation is conducted twice, once assuming that the particle beam is parallel to the $z$-axis and once including a Gaussian distributed deviation from the $z$-axis of the particle beam. 
 \section{Determination of the average decay length of the $K^+$}
 \label{sec: decay_length}
 In a first task we should estimate the average decay length of $K^+$ using data of an already conducted experiment in which $100'000$ measurements
 of decay lengths $dl_i$ were generated. The particle's beam had a fixed momentum of $\SI{75}{\giga\electronvolt\per\clight}$. However, the beam consisted only of $16\%$ of
-$K^+$ . The remaining $84\%$ consisted of $\pi^+$ with a known average decay length of $\beta \gamma c_0 \tau_{\pi^+} = 4.188 \si{\kilo\meter} =
+$K^+$. The remaining $84\%$ consisted of $\pi^+$ with a known average decay length of $\beta \gamma c_0 \tau_{\pi^+} = 4.188 \si{\kilo\meter} =
 adl_{\pi^+}$.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{images/histogram_decay_length.pdf}
-	\caption{The particle distribution from a previous experiment with a fixed momentum of $\SI{75}{\giga\electronvolt}$}
+	\caption{The particle distribution from a previous experiment with a fixed momentum of $\SI{75}{\giga\electronvolt}$.}
 	\label{fig:decay}
 \end{figure}
 To estimate the average decay length of the Kaons $adl_{K^+}$ we used the maximum likelihood method with
@@ -170,11 +170,12 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 	\item Find the optimal distance by checking how many pions hit the detector for each distance.
 	\end{enumerate}
 	
-	1. We can use the results of the first exercise to generate the distance the kaons will travel. For this we use a Monte-Carlo simulation of an exponential decay with $\lambda = 1/adl$. Now that we have the distance travelled, we need the direction of flight to determine the location of the decay. For exercise three the direction of flight is always along the $z$-axis, so the locations of the decay can be calculated simply by multiplying the distances travelled with the vector $[0;0;1]$. For exercise four we will need to rotate these vectors such that the angles between them and the $z$-axis match a normal distribution. To do this we generate an angle $\alpha$ according to a normal distribution (with a $\sigma$ of $\SI{1}{\milli\radian}$) and a second angle $\beta$ according to a uniform distribution (from $0$ to $\pi$). We then rotate the vectors around the $x$-axis by $\alpha$ and then by $\beta$ around the $z$-axis.
+	\subsection{Simulation of the $K^+$ source}
+	We can use the results of the first exercise to generate the distance the kaons will travel. For this we use a Monte-Carlo simulation of an exponential decay with $\lambda = 1/adl$. Now that we have the distance travelled, we need the direction of flight to determine the location of the decay. For exercise three the direction of flight is always along the $z$-axis, so the locations of the decay can be calculated simply by multiplying the distances travelled with the vector $[0;0;1]$. For exercise four we will need to rotate these vectors such that the angles between them and the $z$-axis match a normal distribution. To do this we generate an angle $\alpha$ according to a normal distribution (with a $\sigma$ of $\SI{1}{\milli\radian}$) and a second angle $\beta$ according to a uniform distribution (from $0$ to $\pi$). We then rotate the vectors around the $x$-axis by $\alpha$ and then by $\beta$ around the $z$-axis.
 	With the first part done we can move on to the second.
 
-	
-	2. For the calculations done in this part of the simulation we will need (in addition to the list values and equations \ref{eq: beta} - \ref{eq: mass_kaon} ) the following list values
+	\subsection{Simulating the decay}
+	For the calculations done in this part of the simulation we will need (in addition to the list values and equations \ref{eq: beta} - \ref{eq: mass_kaon} ) the following list values
 	from the Particle Data Group:\footnote{Values from Particle Data Group \href{http://pdg.lbl.gov/2017/listings/rpp2017-list-K-plus-minus.pdf}{($m_{K^+}$)}, \href{http://pdg.lbl.gov/2017/listings/rpp2017-list-pi-plus-minus.pdf}{($m_{pi^+ }$)}, \href{http://pdg.lbl.gov/2017/listings/rpp2017-list-pi-zero.pdf}{($m_{pi^0 }$)}} 
 	
 	\begin{align*}
@@ -189,11 +190,11 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 	\begin{align}
 		E_{\pi^+} = \frac{m_{K^+}^2 + m_{pi^+ }^2 - m_{pi^0 }^2 } {2 m_{K^+}}\\
 		p_{\pi^+} = \sqrt{E_{\pi^+}^2 - m_{pi^+ }^2 }\\
-		p_{\pi^+ } = p_{\pi^0 }\\
+		p_{\pi^+ } = p_{\pi^0 }
 	\end{align}
 
 	
-	We use isotropically distributed unit vetors in the simulation (see AW). We multiply them with $p_{\pi^0}$ to get the momenta for $\pi^0$ in the $K^+$ rest frame. Tho get the momenta of $\pi^+$ we take the same distribution and flip signs. We then build the four vectors  $P^*_{\pi}$.
+	We use isotropically distributed unit vetors\footnote{For the derivation see appendix\ref{subsec: unit_vector}} in the simulation . We multiply them with $p_{\pi^0}$ to get the momenta for $\pi^0$ in the $K^+$ rest frame. Tho get the momenta of $\pi^+$ we take the same distribution and flip signs. We then build the four vectors  $P^*_{\pi}$.
 	
 	\begin{align}
 		 P^*_{\pi} = 
@@ -201,7 +202,8 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 				E_{\pi}^* \\ p_{\pi,x}^* \\ p_{\pi,y}^* \\ p_{\pi,z}^*
 		\end{bmatrix} = 
 		\begin{bmatrix}
-				\sqrt{m_{\pi}^2 + ||p_{\pi}||^2 } \\ p_{\pi,x}^* \\ p_{\pi,y}^* \\ p_{\pi,z}^*
+				\sqrt{m_{\pi}^2 + ||p_{\pi}||^2 } \\ p_{\pi,x}^* \\ p_{\pi,y}^* \\
+				p_{\pi,z}^*
 		\end{bmatrix}
 	\end{align}
 	
@@ -221,13 +223,13 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 	
 		$P_{\pi}$ is the four-vector in the lab frame. $P_{\pi}^*$ is the four-vector in the kaon rest frame. 
 	
-	\subsection{With scattering}
+	\subsubsection{With scattering}
 	
 		When we use a beam that is not parallel to the z-axis, we need to perform a rotation to the momentum of the four-vector before and after the boost. The rotation after the boost is the same that would rotate $e_z$ to align with the position vector. The one before is the inverse rotation.
 		
 		Since the momentum of the four-vectors $P_{\pi}$ of the pions are isotropically distributed in the  $K^+$ rest frame, we can omit the first rotation and still end up with a an isotropical distribution.
 		
-		The operation performed with the angle $\alpha$ around y-axis and $\beta$ around x-axis:
+		The operation performed with the angle $\alpha$ around $y$-axis and $\beta$ around $x$-axis:
 		
 		\begin{align}
 				R(\alpha, \beta) = \begin{bmatrix}
@@ -284,7 +286,7 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 %		return len(decay_positions[hits])
 
 	
-\subsection{Determine optimal detector distance $z_d$}
+\subsubsection{Determine optimal detector distance $z_d$}
 \label{optimal detector distance}
 	We will now determine the optimal distance such that the acceptance of is maximized. Acceptance is defined as follows:
 	
@@ -292,7 +294,6 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 		P(z_d) = \frac{\text{$n$ decays for which both pions hit at $z_d$}}{\text{$n$ decays simulated}} 
 	\end{align}
 	
-	To maximize the acceptance we run the experiment about 500 times with $N = 10^6 $ kaons generated. First we simulate a beam aligned to the $z$-axis. Second we generate a beam that scatters at the source in a gaussian distribution with $\sigma _{\theta} = 0.001$ rad. 
 	
 	To determine the optimal $z$-distance, we implemented the algorithm described in \ref{hits}. We let it run for z values in a range from 215 to 350 meters in 85 evenly sized steps. The algorithm generates 85 double hit counts in an array. We divide by N to get the probabilities. Then we fit it with a polynom of degree 3 and determine the maximum of that polynom. To show it graphically, we will show a plot. The simulation was run once with $N = 10^6 $ decays.
 	
@@ -303,17 +304,19 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 	\label{fig:decay_simulation}
 \end{figure}
 	
-	We run the simulation about 500 times. Fitting the maximum and saving it. The maxima are then put into a histogram.  the average and standard deviation of the maxima are listed below. The standard deviation gives a measure of the statistical uncertainty of the simulation.
+		To maximize the acceptance we run the experiment about 500 times with $N = 10^6 $ kaons generated. First we simulate a beam aligned to the $z$-axis. Second we generate a beam that scatters at the source in a gaussian distribution with $\sigma _{\theta} = 0.001$ rad. 
+		
+		We plot the data for each experiment done and fit a maximum. As an example we show one plot and fit here \ref*{fig:decay_simulation}. The maxima are then put into a histogram.  the average and standard deviation of the maxima are listed below. The standard deviation gives a measure of the statistical uncertainty of the simulation.
 	
-	\textbf{Aligned Beam}
+	\textbf{Optimal $z$ for aligned Beam}
 		\begin{align*}
-		 <z> = \SI{285.5}{\meter}\\
+		 z_{\text{aligned}} = \SI{285.5}{\meter}\\
 		\sigma _z  : \SI{0.7}{\meter}\\
 		\end{align*}
 	
-	\textbf{Scattered Beam}
+	\textbf{Optimal $z$ for scattered Beam}
 		\begin{align*}
-		<z> = \SI{280.7}{\meter}\\
+		z_{\text{scattered}} = \SI{280.7}{\meter}\\
 		\sigma _z  : \SI{0.7}{\meter}\\
 		\end{align*}
 		
@@ -323,7 +326,7 @@ Compared with the literature value of $\SI{1.2380(20)e-8}{\second}$ this result 
 			m_z = \sigma _z \cdot \sqrt{ \left(\frac{\sigma_{adl_{K^+}}}{adl}\right)^2 +  \left(\frac{\sigma_z}{z}\right)^2}
 		\end{align}
 		
-		The final optimal values for z are:
+		The final optimal values for $z$ are:
 		
 		\begin{align*}
 			z_{\text{aligned}} =  \SI{286(5)}{\meter}\\
@@ -397,11 +400,11 @@ y = \frac{\sin(a)+1}{2} \implies a=\arcsin(2y-1)
 \end{align}
 With $y$ being uniformly distributed values from $0$ to $1$ we can use this equation to get the correct $\varphi(a)$. Now all that’s left to do is to rotate the vector $[0;0;1]$ first by $\varphi$ around the $x$-axis and then by $\psi$ around the $y$-axis.
 \subsection{Python code}
-Here we provide a small Python code insight. The full code we released on github\footnote{\href{gitlink}{text}}
+Here we provide a small Python code insight. The full code we released on github\footnote{\href{https://github.com/brightexplosions/kaon_decay_simulation}{https://github.com/brightexplosions/kaon\_decay\_simulation}}
 	%\small
 	\footnotesize
 	%\scriptsize
-\subsubsection{Implementing of the weighted exponential distributions to compute the estimator $\widehat{adl}_{K^+}$}
+\subsubsection{Implementation of the weighted exponential distributions to compute the estimator $\widehat{adl}_{K^+}$}
 \label{subsubse: estimator_code}
 \begin{shaded}
 \begin{python}

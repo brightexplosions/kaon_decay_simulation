@@ -1,3 +1,0 @@
-Figure_2: The maximum is reached at 34.80425 percent with a z-value of 278.1012658227848 m
-plus_2.5: The maximum is reached at 34.6534 percent with a z-value of 282.65822784810126 m
-minus_2.5: The maximum is reached at 34.9335 percent with a z-value of 276.5822784810127 m

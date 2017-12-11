@@ -1,4 +1,9 @@
+"""
+read the data of the optimal z distances
+and plot the histograms
+and calculate uncertainties
 
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -18,10 +23,10 @@ with open("maxima3.dat") as f:
             continue
         if line[0] == "#":
             continue
-
+        
         n, _, use_scatter, p, z = line.split("\t")
         use_scatter = use_scatter.lower() == "true"
-
+	
         if use_scatter:
             Z_scatter.append(float(z))
         else:
@@ -48,20 +53,11 @@ print("#####################################")
 print(len(Z) + len(Z_scatter))
 
 
-
-plt.rc('text.latex',preamble=r'\usepackage{lmodern}')
-plt.rc('text',usetex=True)
-plt.rc('font', family='serif', size=12)
-plt.rc('font', weight='bold')
-#    plt.rc('xtick.major', size=5, pad=7)
-plt.rc('xtick', labelsize=12)
-plt.rc('ytick.major', size=5, pad=3)
-plt.rc('ytick', labelsize=12)
-
-plt.figure(figsize=(7.7, 3.9))
+plt.figure(figsize=(5.7, 3.9))
 plt.subplot(121)
-plt.ylabel("$N$ maxima in that region")
+plt.ylabel("N maxima in that region")
 plt.xlabel("z position [m]")
+plt.title("Optimal z for aligned beam\n {} simulations".format(len(Z)))
 nbins, pos,_ = plt.hist(Z, 40)
 mids = 0.5*pos[:-1] + 0.5*pos[1:]
 diffs = -pos[:-1] + pos[1:]
@@ -70,6 +66,7 @@ gauss = stats.norm(avg, sigma).pdf(mids)
 plt.plot(mids, area*gauss)
 
 plt.subplot(122)
+plt.title("Optimal z for scatterd beam\n {} simulations".format(len(Z_scatter)))
 plt.xlabel("z position [m]")
 nbins, pos,_ = plt.hist(Z_scatter, 40)
 mids = 0.5*pos[:-1] + 0.5*pos[1:]
@@ -78,6 +75,6 @@ area = np.dot(diffs, nbins)
 gauss = stats.norm(avg_scattered, sigma_scattered).pdf(mids)
 plt.plot(mids, area*gauss)
 
-plt.savefig('../report/images/optimal_zpos.pdf')
+plt.savefig("optimal_zpos.pdf")
 
 plt.show()

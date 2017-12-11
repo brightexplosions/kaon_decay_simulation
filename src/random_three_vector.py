@@ -4,7 +4,7 @@ from rotation_matrices import rot_x, rot_y
 
 def isotropic_unit_vec(N):
     """Generates N isotropically distributed 3d unit vectors.
-
+    
     Parameters
     ----------
     N : int
@@ -13,12 +13,12 @@ def isotropic_unit_vec(N):
     Return
     ------
     Nx3 array
-        An array containing N isotropically distributed 3d unit vecotrs (3x1 matrices).
+        An array containing N isotropically distributed 3d unit vecotrs (3x1 matrices). 
     """
-
+    
     phi_int = stats.uniform(0, 1).rvs(N) #the random basis from which we calculate the non-uniformly distributed agle phi
     psi = stats.uniform(0, 2*np.pi).rvs(N) #the uniformly distributed angle psi
-
+    
     phi = np.arcsin(2*phi_int-1) #the formula with which we calculate phi from the uniform distribution (you can find the derivation in the report)
 
     start_vector = np.matrix([0, 0, 1]).T #the vector that will be rotated by random angles
@@ -49,10 +49,10 @@ if __name__ == "__main__":
     z = np.array(vec)[:,2]
 
 
-    #plot to check whether we messed up
+    #plot to check whether we messed up    
     #fig, ax = plt.subplots(1, 1, subplot_kw={'projection':'3d', 'aspect':'equal'})
-    fig = plt.figure(figsize=(5.7, 4.2))
-#    plt.figure(figsize=(5.7, 4.2))
+    fig = plt.figure()
+    plt.figure(figsize=(5.7, 4.2))
 
     ax = fig.gca(projection='3d')
     ax.set_aspect('equal')
