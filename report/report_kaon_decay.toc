@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Determination of the average decay length of the $K^+$}{3}{section.2}
+\contentsline {section}{\numberline {3}Optimal detector distance}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}With scattering}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Counting double hits}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Determine optimal detector distance $z_d$}{8}{subsection.3.3}
+\contentsline {section}{\numberline {4}Conclusion}{10}{section.4}
+\contentsline {section}{\numberline {A}Appendix}{11}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Derivation of the isotropic unit vector generator}{11}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Python code}{14}{subsection.A.2}
+\contentsline {subsubsection}{\numberline {A.2.1}Implementing of the weighted exponential distributions to compute the estimator $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle adl$}\mathaccent "0362{adl}_{K^+}$}{14}{subsubsection.A.2.1}
+\contentsline {subsubsection}{\numberline {A.2.2}Implementation of the single\_hit function}{14}{subsubsection.A.2.2}
+\contentsline {subsubsection}{\numberline {A.2.3}Implementation of the count\_double\_hits function}{15}{subsubsection.A.2.3}

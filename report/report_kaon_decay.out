@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Determination of the average decay length of the K+}{}% 2
+\BOOKMARK [1][-]{section.3}{Optimal detector distance}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{With scattering}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Counting double hits}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Determine optimal detector distance zd}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Conclusion}{}% 7
+\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 8
+\BOOKMARK [2][-]{subsection.A.1}{Derivation of the isotropic unit vector generator}{appendix.A}% 9
+\BOOKMARK [2][-]{subsection.A.2}{Python code}{appendix.A}% 10
+\BOOKMARK [3][-]{subsubsection.A.2.1}{Implementing of the weighted exponential distributions to compute the estimator adl"0362adlK+}{subsection.A.2}% 11
+\BOOKMARK [3][-]{subsubsection.A.2.2}{Implementation of the single\137hit function}{subsection.A.2}% 12
+\BOOKMARK [3][-]{subsubsection.A.2.3}{Implementation of the count\137double\137hits function}{subsection.A.2}% 13

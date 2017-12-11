@@ -1,0 +1,24 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.6em}
+
+\begin{document}
+We will not follow the order of the exercises from the info sheet, since it is easier to explain our solutions if we look at exercise four and three together. As we will see, exercise three can be solved by simply skipping a step in the solution of exercise four. So what exactly had to be done to solve exercises three and four? The problem can be roughly divided into three parts:
+\begin{enumerate}
+\item Simulate the path of the kaons from the source to the point where they decay.
+\item Calculate the momenta of the pions in the lab frame after the decay.
+\item Find the optimal distance by checking how many pions hit the detector for each distance.
+\end{enumerate}
+
+1. We can use the results of the first exercise to generate the distance the kaons will travel. For this we use a Monte-Carlo simulation of an exponential decay with a --lambda-- of --1/adl--. Now that we have the distance travelled, we need the direction of flight to determine the location of the decay. For exercise 3 the direction of flight is always along the z-axis, so the locations of the decay can be calculated simply by multiplying the distances travelled with the vector --[0;0;1]--. For exercise 4 we will need to rotate these vectors such that the angles between them and the z-axis match a normal distribution. To do this we generate an angle --alpha-- according to a normal distribution (with a --sigma-- of 1mrad) and a second angle --beta-- according to a uniform distribution (from 0 to --pi--). We then rotate the vectors around the x-axis by --alpha-- and then by --beta-- around the z-axis.
+With the first part done we can move on to the second.
+
+	
+	
+	
+\end{document}
